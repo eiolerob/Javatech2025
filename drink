@@ -1,0 +1,51 @@
+package drink;
+
+import enums.DrinkSize;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+public abstract class Drink implements DrinkI {
+    private String name;
+    private int amount;
+    private boolean hasIce;
+    private DrinkSize size;
+
+
+    @Override
+    public String toString() {
+
+        return String.format(
+                "%s %s (%d ml; with ice: %s)",
+                name, size, amount, hasIce);
+    }
+}
+
+package drink;
+
+public interface DrinkI {
+
+    String recognizeMe();
+}
+
+package drink;
+
+import enums.DrinkSize;
+
+
+public class Tea extends Drink {
+
+    public Tea(String name, int amount, boolean hasIce, DrinkSize size) {
+        super(name, amount, hasIce, size);
+    }
+
+    @Override
+    public String recognizeMe() {
+        return "It's a tea";
+    }
+}
+
