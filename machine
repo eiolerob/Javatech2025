@@ -1,0 +1,52 @@
+package machine;
+
+import drink.Drink;
+import drink.coffee.Cappuccino;
+import drink.coffee.Frappe;
+import drink.coffee.Latte;
+import enums.DrinkSize;
+
+public class CoffeeMachine implements MachineI{
+
+    @Override
+    public Drink makeDrink(String type, DrinkSize size) {
+        var amount = getAmount(size);
+        switch (type) {
+            case "cappuccino":
+                return new Cappuccino(amount, 50, size);
+            case "frappe":
+                return new Frappe(amount, 150, size);
+            case "latte":
+                return new Latte(amount, 100, size);
+            default:
+                throw new IllegalArgumentException("Invalid type");
+        }
+    }
+    private int getAmount(DrinkSize size) {
+        switch (size) {
+            case S -> {
+                return 150;
+            }
+            case M -> {
+                return 200;
+            }
+            case L -> {
+                return 300;
+            }
+            default -> {
+                return 100;
+            }
+        }
+    }
+}
+
+package machine;
+
+import drink.Drink;
+import enums.DrinkSize;
+
+public interface MachineI {
+
+    Drink makeDrink(String type, DrinkSize size);
+}
+
