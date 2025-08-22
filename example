@@ -40,3 +40,44 @@ public class ForLoopsExamples {
     }
 
 }
+package example;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.IntStream;
+
+public class StreamsExample {
+    public static void streamFilter() {
+        List<String> coffeeList = new ArrayList<>(Arrays.asList("cappuccino","espresso","latte","flat white","americano"));
+
+        List<String> coffeeListWithoutELetter = coffeeList.stream().filter(coffee -> !coffee.contains("e")).toList();
+
+        System.out.println(coffeeListWithoutELetter);
+    }
+
+    public static void streamMap() {
+        List<String> coffeeList = new ArrayList<>(Arrays.asList("cappuccino","espresso","latte","flat white","americano"));
+
+        List<Integer> coffeeLengths = coffeeList.stream().map(coffee -> coffee.length()).toList();
+
+        System.out.println(coffeeLengths);
+    }
+
+    public static void streamReduce() {
+        List<String> coffeeList = new ArrayList<>(Arrays.asList("cappuccino","espresso","latte","flat white","americano"));
+
+        String result = coffeeList.stream().reduce((c1, c2) -> c1 + c2).get();
+
+        System.out.println(result);
+    }
+
+    public static void insStream(){
+        List<String> coffeeList = new ArrayList<>(Arrays.asList("cappuccino","espresso","latte","flat white","americano"));
+
+        IntStream.range(0,coffeeList.size())
+                .mapToObj(index -> "Index " + index + ": " + coffeeList.get(index));
+    }
+
+}
+
