@@ -1,0 +1,42 @@
+package example;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class ForLoopsExamples {
+
+    public static void forEachLoop(){
+        List<String> coffeeList = new ArrayList<>(Arrays.asList("cappuccino","espresso","latte","flat white","americano"));
+        for(String coffee : coffeeList){
+            int index = coffeeList.indexOf(coffee);
+            coffee = coffee.toUpperCase();
+
+            coffeeList.set(index,coffee);
+        }
+        System.out.println(coffeeList);
+    }
+
+    public static void forLoopSimpleEnhanced(LocalDate start, LocalDate end, long step) {
+        List<LocalDate> datesInRange = new ArrayList<>();
+        for(LocalDate day = start; day.isBefore(end); day = day.plusDays(step)) {
+            datesInRange.add(day);
+        }
+        System.out.println(datesInRange);
+    }
+
+    public static void forLoopSimple() {
+        List<String> coffeeList = new ArrayList<>(Arrays.asList("cappuccino","espresso","latte","flat white","americano"));
+        List<String> coffeeToRemove = new ArrayList<>();
+        for (int i = 0; i < coffeeList.size(); i++) {
+            System.out.println(i);
+            System.out.println(coffeeList.get(i));
+
+            if (i==2){
+                coffeeToRemove.add(coffeeList.get(i));
+            }
+        }
+    }
+
+}
